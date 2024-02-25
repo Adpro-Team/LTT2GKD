@@ -13,6 +13,10 @@ jobs:
 
       - uses: actions/setup-node@v4.0.1
 
+      - run: npm i json5
+
+      - run: npm i hashj
+
       - id: convert
         run: node ./src/convert.js
 
