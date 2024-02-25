@@ -1,0 +1,11 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@vercel/node": "^3.0.20",
+    "axios": "^1.6.7",
+    "hashj": "^1.0.2",
+    "http-proxy-middleware": "^2.0.6",
+    "json5": "^2.2.3",
+    "typescript": "^5.3.3"
+  }
+}

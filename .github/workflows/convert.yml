@@ -1,0 +1,36 @@
+name: convert
+
+on:
+  workflow_dispatch:
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.1
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4.0.1
+
+      - id: convert
+        run: node ./src/convert.js
+
+      - name: Git commit
+        id: commit
+        run: |
+          git config --local user.email github-actions[bot]@users.noreply.github.com
+          git config --local user.name github-actions[bot]
+          git config --global core.autocrlf true
+          git config --global core.safecrlf false
+          git status
+          git add .
+          git commit -a -m "chore: convert"
+        continue-on-error: true
+
+      - name: Git push
+        if: ${{ steps.commit.outcome == 'success' }}
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
