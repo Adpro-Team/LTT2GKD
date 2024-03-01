@@ -53,3 +53,11 @@ Fork 本仓库的 `main`分支。
 ## 仓库信息
 
 当前收录应用 684 个，其中，添加应用补丁 0 个。
+
+## 致谢
+
+应用库提供 By [@AIsouler](https://github.com/AIsouler)
+
+[李跳跳测试规则提供](https://github.com/Snoopy1866/LiTiaotiao-Custom-Rules) By [@Snoopy1866](https://github.com/Snoopy1866)
+
+部分思路帮助 By [@Snoopy1866](https://github.com/Snoopy1866)
