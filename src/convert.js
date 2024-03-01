@@ -1,6 +1,13 @@
 import json5 from 'json5';
 import fs from 'node:fs/promises';
-import { getJsonArrayLength } from "./method";
+
+function getJsonArrayLength(jsonArray){
+  let length = 0;
+  for(let i in jsonArray){
+    length++;
+  }
+  return length;
+};
 
 function textRuleConvert(lttRule){
   let temp = lttRule.split('&');
