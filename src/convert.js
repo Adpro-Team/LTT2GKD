@@ -51,7 +51,7 @@ const convert = async () => {
   const AppListFile = await fs.readFile(process.cwd() + '/AppList.json5', 'utf-8');
   const lttSub = await fs.readFile(process.cwd() + '/ltt.json', 'utf-8');
   const AppList = json5.parse(AppListFile);
-  const origin = JSON.parse(lttSub);
+  const origin = json5.parse(lttSub);
   const originLength = getJsonArrayLength(origin);
   let throwCount = 0;
 
@@ -76,7 +76,7 @@ const convert = async () => {
       };
       thisApp.id = AppList[index].appId;
       thisApp.name = AppList[index].appName;
-      let Lrules = JSON.parse(a[hash[0]]).popup_rules;
+      let Lrules = json5.parse(a[hash[0]]).popup_rules;
       let groupKeyCount = 1;
       let ruleKeyCount = 0;
 
@@ -97,7 +97,7 @@ const convert = async () => {
 
         if(r.hasOwnProperty('times')) thisRule['actionMaximum'] = r.times;
 
-        if(JSON.parse(a[hash[0]]).hasOwnProperty('delay')) thisRule['actionDelay'] = JSON.parse(a[hash[0]]).delay;
+        if(json5.parse(a[hash[0]]).hasOwnProperty('delay')) thisRule['actionDelay'] = json5.parse(a[hash[0]]).delay;
 
         thisRule.matches.push(textRuleConvert(r.id));
 
@@ -113,8 +113,8 @@ const convert = async () => {
         }
 
         thisGroup.rules.push(thisRule);
-        if(JSON.parse(a[hash[0]]).hasOwnProperty('unite_popup_rules')){
-          if(JSON.parse(a[hash[0]]).unite_popup_rules == true) ruleKeyCount++;
+        if(json5.parse(a[hash[0]]).hasOwnProperty('unite_popup_rules')){
+          if(json5.parse(a[hash[0]]).unite_popup_rules == true) ruleKeyCount++;
         }
         else{
           thisApp.groups.push(thisGroup);
