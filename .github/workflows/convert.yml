@@ -13,6 +13,8 @@ jobs:
 
       - uses: actions/setup-node@v4
 
+      - run: npm install
+
       - id: convert
         run: npm exec tsx ./src/convert.ts
 
