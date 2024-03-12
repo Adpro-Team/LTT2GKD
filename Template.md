@@ -45,7 +45,7 @@ Fork 本仓库的 `main`分支。
 ```shell
 npm install
 
-node ./src/convert.js
+npm exec tsx ./src/convert.ts
 ```
 
 运行成功后，转换结果会出现在`-2.json`。

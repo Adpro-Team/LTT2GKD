@@ -4,7 +4,7 @@ import { getJsonArrayLength, iArrayToArray } from "./method";
 import { PatchAppList } from '../patch';
 
 export const UpdateMd = async () => {
-  const defultAppListFile = await fs.readFile(process.cwd() + '/AIsouler_gkd.json5', 'utf-8');
+  const defultAppListFile = await fs.readFile(process.cwd() + '/gkd.json5', 'utf-8');
   const defultAppList = json5.parse(defultAppListFile);
   const defultAppCount = getJsonArrayLength(defultAppList.apps);
 

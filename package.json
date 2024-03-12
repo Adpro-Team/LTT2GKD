@@ -1,6 +1,7 @@
 {
   "type": "module",
   "dependencies": {
+    "@gkd-kit/api": "^0.0.4",
     "hashj": "^1.0.2",
     "json5": "^2.2.3",
     "tsc": "^2.0.4",

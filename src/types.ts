@@ -1,4 +1,4 @@
-export type IArray<T> = T | T[];
+import { IArray } from "@gkd-kit/api";
 
 export type Root = IArray<RawApp>;
 

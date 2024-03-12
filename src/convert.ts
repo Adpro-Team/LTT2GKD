@@ -1,15 +1,9 @@
 import json5 from 'json5';
+import { RawSubscription, RawApp, RawAppGroup, RawAppRule, Position, IArray } from '@gkd-kit/api';
+import { getJsonArrayLength, iArrayToArray } from './method'
 import fs from 'node:fs/promises';
 
-function getJsonArrayLength(jsonArray){
-  let length = 0;
-  for(let i in jsonArray){
-    length++;
-  }
-  return length;
-};
-
-function textRuleConvert(lttRule){
+function textRuleConvert(lttRule: string){
   let temp = lttRule.split('&');
   for(let i = 0;i < temp.length;i++){
     if(temp[i].startsWith('+')) temp[i] = temp[i].replace('+','^="');
@@ -26,18 +20,18 @@ function textRuleConvert(lttRule){
   return rule;
 };
 
-function boundsRuleConvert(lttRule){
+function boundsRuleConvert(lttRule: string){
   let temp = lttRule.split(',');
   let width = Number(temp[2]);
   let height = temp[3];
-  let position = {
+  let position: Position = {
     left: width,
     top: `${height} / width`
   };
   return position;
 };
 
-const GKDRawSub = {
+const GKDRawSub: RawSubscription = {
   id: -2,
   name: '本地订阅',
   version: 1,
@@ -57,9 +51,9 @@ const convert = async () => {
 
   var {...thisSub} = GKDRawSub;
 
-  origin.forEach((a) => {
+  origin.forEach((a: any) => {
     let isInclude = false;
-    let index;
+    let index: string | null = null;
     let hash = Object.keys(a);
     for(let i in AppList){
       if(hash[0] == AppList[i].hash){
@@ -69,50 +63,51 @@ const convert = async () => {
       }
     }
     if(isInclude){
-      let thisApp = {
-        id: undefined,
-        name: undefined,
-        groups: []
+      let thisApp: RawApp = {
+        id: AppList[index as string].appId,
+        name: AppList[index as string].appName,
+        groups: [],
       };
-      thisApp.id = AppList[index].appId;
-      thisApp.name = AppList[index].appName;
       let Lrules = json5.parse(a[hash[0]]).popup_rules;
       let groupKeyCount = 1;
       let ruleKeyCount = 0;
 
-      Lrules.forEach((r) => {
-        let thisGroup = {
-          key: undefined,
-          name: undefined,
-          rules: []
+      Lrules.forEach((r: any) => {
+        let thisGroup: RawAppGroup = {
+          key: groupKeyCount,
+          name: `${AppList[index as string].appName}-${String(groupKeyCount)}`,
+          rules: [],
         };
-        thisGroup.key = groupKeyCount;
-        thisGroup.name = `${AppList[index].appName}-${String(groupKeyCount)}`;
 
-        let thisRule = {
-          key: undefined,
-          matches: []
+        let thisRule: RawAppRule = {
+          key: ruleKeyCount,
+          matches: [],
         };
-        thisRule.key = ruleKeyCount;
 
-        if(r.hasOwnProperty('times')) thisRule['actionMaximum'] = r.times;
+        if(r.hasOwnProperty('times')) thisRule.actionMaximum = r.times;
 
-        if(json5.parse(a[hash[0]]).hasOwnProperty('delay')) thisRule['actionDelay'] = json5.parse(a[hash[0]]).delay;
+        if(json5.parse(a[hash[0]]).hasOwnProperty('delay')) thisRule.actionDelay = json5.parse(a[hash[0]]).delay;
 
-        thisRule.matches.push(textRuleConvert(r.id));
+        const thisRuleMatches = iArrayToArray(thisRule.matches as IArray<string>);
 
-        if(r.action == 'GLOBAL_ACTION_BACK') thisRule['action'] = 'back';
+        thisRuleMatches.push(textRuleConvert(r.id));
+
+        if(r.action == 'GLOBAL_ACTION_BACK') thisRule.action = 'back';
         else{
           let isBounds = r.action.split(',');
-          if(isBounds.length < 4) thisRule.matches.push(textRuleConvert(r.action));
+          if(isBounds.length < 4) iArrayToArray(thisRule.matches as IArray<string>).push(textRuleConvert(r.action));
           else if(isBounds.length == 4 || isBounds.length == 5){
-            thisRule['position'] = boundsRuleConvert(r.action);
-            thisRule['action'] = 'clickCenter';
-            thisRule.matches.push('[id="android:id/content"]');
+            thisRule.position = boundsRuleConvert(r.action);
+            iArrayToArray(thisRule.matches as IArray<string>).push('[id="android:id/content"]');
           }
         }
 
-        thisGroup.rules.push(thisRule);
+        thisRule.matches = thisRuleMatches;
+
+        const thisGroupRules = iArrayToArray(thisGroup.rules as IArray<RawAppRule>);
+
+        thisGroupRules.push(thisRule);
+        thisGroup.rules = thisGroupRules;
         if(json5.parse(a[hash[0]]).hasOwnProperty('unite_popup_rules')){
           if(json5.parse(a[hash[0]]).unite_popup_rules == true) ruleKeyCount++;
         }
@@ -122,7 +117,10 @@ const convert = async () => {
         }
       });
 
-      thisSub.apps.push(thisApp);
+      const thisSubApps = iArrayToArray(thisSub.apps as RawApp[]);
+
+      thisSubApps.push(thisApp);
+      thisSub.apps = thisSubApps;
     }
     else throwCount++;
   });

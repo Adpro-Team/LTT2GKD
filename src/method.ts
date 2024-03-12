@@ -1,4 +1,4 @@
-import type { IArray } from "./types";
+import type { IArray } from "@gkd-kit/api";
 
 export const iArrayToArray = <T>(array: IArray<T> = []): T[] => {
   return Array<T>().concat(array);

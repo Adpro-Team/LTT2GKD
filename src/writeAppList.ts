@@ -1,6 +1,6 @@
 import { createRequire } from "module";
 import type { Root } from "./types";
-import { RawApp } from "./originTypes";
+import { RawApp } from '@gkd-kit/api';
 import { PatchAppList } from '../patch';
 import { getJsonArrayLength, iArrayToArray } from "./method";
 import fs from 'node:fs/promises';
@@ -9,7 +9,7 @@ const require = createRequire(import.meta.url);
 const hashj = require('hashj');
 
 export const writeList = async() => {
-  const subFile = await fs.readFile(process.cwd() + '/AIsouler_gkd.json5', 'utf-8');
+  const subFile = await fs.readFile(process.cwd() + '/gkd.json5', 'utf-8');
   const sub = await json5.parse(subFile);
   const apps = sub.apps;
   var List: Root = [];

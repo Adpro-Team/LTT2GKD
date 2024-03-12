@@ -10,15 +10,11 @@ jobs:
   on_push:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4.0.1
-
-      - run: npm i json5
-
-      - run: npm i tsc
+      - uses: actions/setup-node@v4
 
       - id: updateMd
         run: npm exec tsx ./src/updateMd.ts

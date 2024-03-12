@@ -7,18 +7,14 @@ jobs:
   convert:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4.0.1
-
-      - run: npm i json5
-
-      - run: npm i hashj
+      - uses: actions/setup-node@v4
 
       - id: convert
-        run: node ./src/convert.js
+        run: npm exec tsx ./src/convert.ts
 
       - name: Git commit
         id: commit
