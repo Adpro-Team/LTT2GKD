@@ -31,16 +31,6 @@ function boundsRuleConvert(lttRule: string){
   return position;
 };
 
-const GKDRawSub: RawSubscription = {
-  id: -2,
-  name: '本地订阅',
-  version: 1,
-  author: 'gkd',
-  globalGroups: [],
-  categories: [],
-  apps: []
-};
-
 const convert = async () => {
   const AppListFile = await fs.readFile(process.cwd() + '/AppList.json5', 'utf-8');
   const lttSub = await fs.readFile(process.cwd() + '/ltt.json', 'utf-8');
@@ -49,7 +39,15 @@ const convert = async () => {
   const originLength = getJsonArrayLength(origin);
   let throwCount = 0;
 
-  var {...thisSub} = GKDRawSub;
+  let thisSub: RawSubscription = {
+    id: -2,
+    name: '本地订阅',
+    version: 1,
+    author: 'gkd',
+    globalGroups: [],
+    categories: [],
+    apps: [],
+  };
 
   origin.forEach((a: any) => {
     let isInclude = false;
@@ -95,10 +93,10 @@ const convert = async () => {
         if(r.action == 'GLOBAL_ACTION_BACK') thisRule.action = 'back';
         else{
           let isBounds = r.action.split(',');
-          if(isBounds.length < 4) iArrayToArray(thisRule.matches as IArray<string>).push(textRuleConvert(r.action));
+          if(isBounds.length < 4) thisRuleMatches.push(textRuleConvert(r.action));
           else if(isBounds.length == 4 || isBounds.length == 5){
             thisRule.position = boundsRuleConvert(r.action);
-            iArrayToArray(thisRule.matches as IArray<string>).push('[id="android:id/content"]');
+            thisRuleMatches.push('[id="android:id/content"]');
           }
         }
 
