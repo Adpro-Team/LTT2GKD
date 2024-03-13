@@ -15,6 +15,9 @@ jobs:
 
       - run: npm install
 
+      - id: update_list
+        run: npm run list
+
       - id: convert
         run: npm run convert
 
