@@ -1,13 +1,17 @@
 {
   "type": "module",
+  "scripts": {
+    "convert": "npm exec tsx ./src/convert.ts",
+    "list": "npm exec tsx ./src/writeAppList.ts"
+  },
   "dependencies": {
     "@gkd-kit/api": "^0.0.4",
     "hashj": "^1.0.2",
     "json5": "^2.2.3",
-    "tsc": "^2.0.4",
-    "typescript": "^5.3.3"
+    "tsc": "^2.0.4"
   },
   "devDependencies": {
-    "@types/node": "^20.11.24"
+    "@types/node": "^20.11.24",
+    "typescript": "^5.4.2"
   }
 }

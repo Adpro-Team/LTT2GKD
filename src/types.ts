@@ -1,8 +1,6 @@
-import { IArray } from "@gkd-kit/api";
+export type Root = RawApp[];
 
-export type Root = IArray<RawApp>;
-
-export type PatchApp = IArray<RawPatchApp>;
+export type PatchApp = RawPatchApp[];
 
 type RawApp = {
   /**

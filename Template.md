@@ -45,7 +45,7 @@ Fork 本仓库的 `main`分支。
 ```shell
 npm install
 
-npm exec tsx ./src/convert.ts
+npm run convert
 ```
 
 运行成功后，转换结果会出现在`-2.json`。
@@ -58,7 +58,7 @@ npm exec tsx ./src/convert.ts
 
 > 由于hash的不可逆性，部分规则会因无法获取具体的应用信息，而被抛弃，具体抛弃数量可以查看`log.txt`。
 
-本仓库目前收录有 --DEFULTAPPCOUNT-- 个应用，但总会有应用未被覆盖，这就会导致该应用的规则被丢弃。
+本仓库目前收录有许多个应用，但总会有应用未被覆盖，这就会导致该应用的规则被丢弃。
 
 那么，没有办法解决吗？
 
@@ -78,7 +78,15 @@ npm exec tsx ./src/convert.ts
 ...
 ```
 
+（本地运行需要执行此步骤）然后在命令行工具输入
+
+```shell
+npm run list
+```
+
 就可以了
+
+**注意：用户补丁按照上面的格式放入patch.ts即可，libs文件夹内放的是GKD的订阅文件，也可以起到补丁效果，但必须是订阅文件！**
 
 ## 仓库信息
 
@@ -86,7 +94,7 @@ npm exec tsx ./src/convert.ts
 
 ## 致谢
 
-应用库提供 By [@AIsouler](https://github.com/AIsouler)
+应用库提供 By [@AIsouler](https://github.com/AIsouler)、[@gkd-kit](https://github.com/gkd-kit)
 
 [李跳跳测试规则提供](https://github.com/Snoopy1866/LiTiaotiao-Custom-Rules) By [@Snoopy1866](https://github.com/Snoopy1866)
 
