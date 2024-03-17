@@ -1,12 +1,16 @@
 import json5 from 'json5';
 import { RawSubscription, RawApp, RawAppGroup, RawAppRule, IArray } from '@gkd-kit/api';
+import { Root } from './types';
 import { getJsonArrayLength, iArrayToArray, textRuleConvert, boundsRuleConvert } from './method'
 import fs from 'node:fs/promises';
 
 const convert = async () => {
   const AppListFile = await fs.readFile(process.cwd() + '/AppList.json5', 'utf-8');
+  const AppExtListFile = await fs.readFile(process.cwd() + '/AppExtList.json5', 'utf-8');
   const lttSub = await fs.readFile(process.cwd() + '/ltt.json', 'utf-8');
-  const AppList = json5.parse(AppListFile);
+  const AppList: Root = json5.parse(AppListFile);
+  const AppExtList: Root = json5.parse(AppExtListFile);
+  const List = AppList.concat(AppExtList);
   const origin = json5.parse(lttSub);
   const originLength = getJsonArrayLength(origin);
   let throwCount = 0;
@@ -23,10 +27,10 @@ const convert = async () => {
 
   origin.forEach((a: any) => {
     let isInclude = false;
-    let index: string | null = null;
+    let index: number | null = null;
     let hash = Object.keys(a);
-    for(let i in AppList){
-      if(hash[0] == AppList[i].hash){
+    for(let i = 0;i < List.length;i++){
+      if(hash[0] == List[i].hash){
         isInclude = true;
         index = i;
         break;
@@ -34,8 +38,8 @@ const convert = async () => {
     }
     if(isInclude){
       let thisApp: RawApp = {
-        id: AppList[index as string].appId,
-        name: AppList[index as string].appName,
+        id: List[index as number].appId,
+        name: List[index as number].appName,
         groups: [],
       };
       let Lrules = json5.parse(a[hash[0]]).popup_rules;
@@ -45,7 +49,7 @@ const convert = async () => {
       Lrules.forEach((r: any) => {
         let thisGroup: RawAppGroup = {
           key: groupKeyCount,
-          name: `${AppList[index as string].appName}-${String(groupKeyCount)}`,
+          name: `${List[index as number].appName}-${String(groupKeyCount)}`,
           rules: [],
         };
 
