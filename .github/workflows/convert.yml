@@ -13,13 +13,15 @@ jobs:
 
       - uses: actions/setup-node@v4
 
-      - run: npm install
+      - uses: pnpm/action-setup@v3
+
+      - run: pnpm install
 
       - id: update_list
-        run: npm run list
+        run: pnpm run list
 
       - id: convert
-        run: npm run convert
+        run: pnpm run convert
 
       - name: Git commit
         id: commit

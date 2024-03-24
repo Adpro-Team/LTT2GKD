@@ -16,10 +16,12 @@ jobs:
 
       - uses: actions/setup-node@v4
 
-      - run: npm install
+      - uses: pnpm/action-setup@v3
+
+      - run: pnpm install
 
       - id: updateMd
-        run: npm exec tsx ./src/updateMd.ts
+        run: pnpm exec tsx ./src/updateMd.ts
 
       - name: Git commit
         id: commit
