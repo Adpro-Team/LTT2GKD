@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>李跳跳规则转GKD规则</title>
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2>李跳跳规则转GKD规则</h2>
+    <textarea id="ltt-rules" rows="15" cols="100" placeholder="请输入李跳跳规则"></textarea>
+    <textarea id="gkd-rules" rows="15" cols="100"></textarea>
+    <button class="button" onclick="convert()">转换</button>
+    <button class="button" onclick="exportJSON()">导出</button>
+    <p class="message" id="export-message"></p>
+  </div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/json5/2.2.3/index.min.js"></script>
+  <script src="./js/method.js"></script>
+  <script src="./js/convert.js"></script>
+  <script src="./js/export.js"></script>
+
+  <footer>
+    <p align="center">
+      <b>
+        点击查看<a href="https://github.com/Adpro-Team/LTT2GKD" target="_blank"> Github</a>项目
+        本页面由<a href="https://github.com/Adpro-Team" target="_blank"> Adpro-Team </a>进行维护
+      </b>
+    </p>
+    <p align="center">
+      <b>
+        本页面由 https://snoopy1866.github.io/LiTiaotiao-Custom-Rules/ 修改而来
+        在此特别感谢<a href="https://github.com/FW27623"> FW27623 </a>
+      </b>
+    </p>
+  </footer>
+</body>
+
+</html>
