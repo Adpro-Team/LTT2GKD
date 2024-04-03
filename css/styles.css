@@ -37,6 +37,7 @@ textarea {
   border-radius: 0.5rem;
   border: 1px solid #ccc;
   font-size: var(--font-size);
+  font-family: 'Fira Code';
   max-width: 80%;
 }
 
