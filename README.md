@@ -1,6 +1,10 @@
 # LTT2GKD
 
-李跳跳规则转GKD规则
+李跳跳规则转GKD规则。
+
+网页版上线，欢迎使用。
+
+[点此跳转](https://ltt2gkd.adproqwq.xyz)
 
 ## 使用教程
 
