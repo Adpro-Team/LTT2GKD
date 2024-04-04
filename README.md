@@ -102,7 +102,7 @@ pnpm run list
 
 应用库提供 By [@AIsouler](https://github.com/AIsouler)、[@gkd-kit](https://github.com/gkd-kit)
 
-[李跳跳测试规则提供](https://github.com/Snoopy1866/LiTiaotiao-Custom-Rules) By [@Snoopy1866](https://github.com/Snoopy1866)
+李跳跳测试规则提供 By [@Snoopy1866](https://github.com/Snoopy1866)、[@FreezingArts](https://github.com/FreezingArts)
 
 部分思路帮助 By [@Snoopy1866](https://github.com/Snoopy1866)
 
