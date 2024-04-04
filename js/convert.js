@@ -17,8 +17,8 @@ async function convert(){
   const originLength = getJsonArrayLength(origin);
   let throwCount = 0;
 
-  for(let a of origin){
-    if(Object.keys(a)[0].match(/-?[0-9]+/) === null) continue;
+  origin.forEach((a) => {
+    if(Object.keys(a)[0].match(/-?[0-9]+/) === null) return;
     let isInclude = false;
     let index;
     let hash = Object.keys(a);
@@ -36,7 +36,7 @@ async function convert(){
         groups: [],
       };
       let LappConfig = JSON5.parse(a[hash[0]]);
-      if(!LappConfig.hasOwnProperty('popup_rules')) continue;
+      if(!LappConfig.hasOwnProperty('popup_rules')) return;
       let Lrules = LappConfig.popup_rules;
       let groupKeyCount = 1;
       let ruleKeyCount = 0;
@@ -103,7 +103,7 @@ async function convert(){
       thisSub.apps = thisSubApps;
     }
     else throwCount++;
-  }
+  });
 
   alert(`共识别到应用${originLength}个，已抛弃${throwCount}个未知应用的规则`);
 
