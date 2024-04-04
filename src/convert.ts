@@ -26,6 +26,7 @@ const convert = async () => {
   };
 
   origin.forEach((a: any) => {
+    if(Object.keys(a)[0].match(/-?[0-9]+/) === null) return;
     let isInclude = false;
     let index: number | null = null;
     let hash = Object.keys(a);
@@ -42,16 +43,23 @@ const convert = async () => {
         name: List[index as number].appName,
         groups: [],
       };
-      let Lrules = json5.parse(a[hash[0]]).popup_rules;
+      let LappConfig = json5.parse(a[hash[0]]);
+      if(!LappConfig.hasOwnProperty('popup_rules')) return;
+      let Lrules = LappConfig.popup_rules;
       let groupKeyCount = 1;
       let ruleKeyCount = 0;
+      let thisGroup: RawAppGroup;
 
       Lrules.forEach((r: any) => {
-        let thisGroup: RawAppGroup = {
-          key: groupKeyCount,
-          name: `${List[index as number].appName}-${String(groupKeyCount)}`,
-          rules: [],
-        };
+        if(r == null) return;
+
+        if(ruleKeyCount == 0){
+          thisGroup = {
+            key: groupKeyCount,
+            name: `${List[index as number].appName}-${String(groupKeyCount)}`,
+            rules: [],
+          };
+        }
 
         let thisRule: RawAppRule = {
           key: ruleKeyCount,
@@ -60,7 +68,7 @@ const convert = async () => {
 
         if(r.hasOwnProperty('times')) thisRule.actionMaximum = r.times;
 
-        if(json5.parse(a[hash[0]]).hasOwnProperty('delay')) thisRule.actionDelay = json5.parse(a[hash[0]]).delay;
+        if(LappConfig.hasOwnProperty('delay')) thisRule.actionDelay = LappConfig.delay;
 
         const thisRuleMatches = iArrayToArray(thisRule.matches as IArray<string>);
 
@@ -82,8 +90,14 @@ const convert = async () => {
 
         thisGroupRules.push(thisRule);
         thisGroup.rules = thisGroupRules;
-        if(json5.parse(a[hash[0]]).hasOwnProperty('unite_popup_rules')){
-          if(json5.parse(a[hash[0]]).unite_popup_rules == true) ruleKeyCount++;
+        if(LappConfig.hasOwnProperty('unite_popup_rules')){
+          if(LappConfig.unite_popup_rules == true){
+            if(ruleKeyCount < getJsonArrayLength(LappConfig) - 1) ruleKeyCount++;
+            else{
+              thisApp.groups.push(thisGroup);
+              groupKeyCount++;
+            }
+          }
         }
         else{
           thisApp.groups.push(thisGroup);
