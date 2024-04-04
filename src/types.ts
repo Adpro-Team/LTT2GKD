@@ -31,7 +31,7 @@ type RawPatchApp = {
   appName: string;
 };
 
-export type LogRawApp = {
+export interface LogRawApp {
   /**
    * 包名
    */
