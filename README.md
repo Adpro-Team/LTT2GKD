@@ -47,9 +47,9 @@ Fork 本仓库的 `main`分支。
 的李跳跳规则填写进入`ltt.json`，然后使用命令行依次运行：
 
 ```shell
-npm install
+pnpm i
 
-npm run convert
+pnpm convert
 ```
 
 运行成功后，转换结果会出现在`-2.json`。
@@ -85,7 +85,7 @@ npm run convert
 （本地运行需要执行此步骤）然后在命令行工具输入
 
 ```shell
-npm run list
+pnpm run list
 ```
 
 就可以了
