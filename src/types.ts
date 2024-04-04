@@ -1,8 +1,10 @@
 export type Root = RawApp[];
 
-export type PatchApp = RawPatchApp[];
+export type PatchApps = RawPatchApp[];
 
-type RawApp = {
+export type LogApps = LogRawApp[];
+
+export type RawApp = {
   /**
    * 应用包名
    */
@@ -19,7 +21,7 @@ type RawApp = {
   hash: string;
 };
 
-type RawPatchApp = {
+export type RawPatchApp = {
   /**
    * 应用包名
    */
@@ -31,7 +33,7 @@ type RawPatchApp = {
   appName: string;
 };
 
-export interface LogRawApp {
+export type LogRawApp = {
   /**
    * 包名
    */

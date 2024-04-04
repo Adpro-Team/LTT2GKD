@@ -1,5 +1,5 @@
 import { createRequire } from "module";
-import type { Root } from "./types";
+import type { Root, RawPatchApp } from "./types";
 import { RawApp } from '@gkd-kit/api';
 import { PatchAppList } from '../patch';
 import { getJsonArrayLength } from "./method";
@@ -29,7 +29,7 @@ export const writeList = async() => {
 
   let PatchCount = getJsonArrayLength(PatchAppList);
     if(PatchCount != 0){
-      PatchAppList.forEach((a) => {
+      PatchAppList.forEach((a: RawPatchApp) => {
         if(id.indexOf(a.packageName) == -1){
           id.push(a.packageName);
           name.push(a.appName);

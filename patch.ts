@@ -1,5 +1,5 @@
-import { PatchApp } from './src/types';
+import { PatchApps } from './src/types';
 
-export const PatchAppList: PatchApp = [
+export const PatchAppList: PatchApps = [
   
 ];
