@@ -27,9 +27,9 @@ function boundsRuleConvert(lttRule){
   let temp = lttRule.split(',');
   let width = Number(temp[2]);
   let height = temp[3];
-  let position = new Position({
+  let position = {
     left: width,
     top: `${height} / width`
-  });
+  };
   return position;
 };
