@@ -17,7 +17,8 @@ async function convert(){
   const originLength = getJsonArrayLength(origin);
   let throwCount = 0;
 
-  origin.forEach((a) => {
+  for(let a of origin){
+    if(Object.keys(a)[0].match(/-?[0-9]+/) === null) continue;
     let isInclude = false;
     let index;
     let hash = Object.keys(a);
@@ -34,16 +35,23 @@ async function convert(){
         name: List[index].appName,
         groups: [],
       };
-      let Lrules = JSON5.parse(a[hash[0]]).popup_rules;
+      let LappConfig = JSON5.parse(a[hash[0]]);
+      if(!LappConfig.hasOwnProperty('popup_rules')) continue;
+      let Lrules = LappConfig.popup_rules;
       let groupKeyCount = 1;
       let ruleKeyCount = 0;
+      let thisGroup;
 
       Lrules.forEach((r) => {
-        let thisGroup = {
-          key: groupKeyCount,
-          name: `${List[index].appName}-${String(groupKeyCount)}`,
-          rules: [],
-        };
+        if(r == null) return;
+
+        if(ruleKeyCount == 0){
+          thisGroup = {
+            key: groupKeyCount,
+            name: `${List[index].appName}-${String(groupKeyCount)}`,
+            rules: [],
+          };
+        }
 
         let thisRule = {
           key: ruleKeyCount,
@@ -52,7 +60,7 @@ async function convert(){
 
         if(r.hasOwnProperty('times')) thisRule.actionMaximum = r.times;
 
-        if(JSON5.parse(a[hash[0]]).hasOwnProperty('delay')) thisRule.actionDelay = JSON5.parse(a[hash[0]]).delay;
+        if(LappConfig.hasOwnProperty('delay')) thisRule.actionDelay = LappConfig.delay;
 
         const thisRuleMatches = thisRule.matches;
 
@@ -74,8 +82,14 @@ async function convert(){
 
         thisGroupRules.push(thisRule);
         thisGroup.rules = thisGroupRules;
-        if(JSON5.parse(a[hash[0]]).hasOwnProperty('unite_popup_rules')){
-          if(JSON5.parse(a[hash[0]]).unite_popup_rules == true) ruleKeyCount++;
+        if(LappConfig.hasOwnProperty('unite_popup_rules')){
+          if(LappConfig.unite_popup_rules == true){
+            if(ruleKeyCount < getJsonArrayLength(LappConfig) - 1) ruleKeyCount++;
+            else{
+              thisApp.groups.push(thisGroup);
+              groupKeyCount++;
+            }
+          }
         }
         else{
           thisApp.groups.push(thisGroup);
@@ -89,7 +103,7 @@ async function convert(){
       thisSub.apps = thisSubApps;
     }
     else throwCount++;
-  });
+  }
 
   alert(`共识别到应用${originLength}个，已抛弃${throwCount}个未知应用的规则`);
 
