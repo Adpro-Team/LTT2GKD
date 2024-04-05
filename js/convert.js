@@ -1,8 +1,8 @@
 var thisSub = {
-  id: 1919810,
-  name: '新世纪福音战士',
-  version: 1,
-  author: 'https://ltt2gkd.adproqwq.xyz',
+  id: -2,
+  name: '本地订阅',
+  version: 0,
+  author: 'gkd',
   globalGroups: [],
   categories: [],
   apps: [],
