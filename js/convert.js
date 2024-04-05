@@ -1,8 +1,9 @@
 var thisSub = {
-  id: -2,
-  name: '本地订阅',
+  id: 1919810,
+  name: '新世纪福音战士',
   version: 1,
-  author: 'gkd',
+  author: 'https://ltt2gkd.adproqwq.xyz',
+  checkUpdateUrl: './version.json5',
   globalGroups: [],
   categories: [],
   apps: [],
