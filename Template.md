@@ -26,6 +26,8 @@ Fork 本仓库的 `main`分支。
 
 运行成功后，转换结果会出现在`-2.json`。
 
+参考[教程](https://ltt2gkd.adproqwq.xyz/tutoril.html)导入GKD使用。
+
 由于hash的不可逆性，部分规则会因无法获取具体的应用信息，而被抛弃，具体抛弃数量可以查看`log.txt`。
 
 #### 本地运行
@@ -53,6 +55,8 @@ pnpm convert
 ```
 
 运行成功后，转换结果会出现在`-2.json`。
+
+参考[教程](https://ltt2gkd.adproqwq.xyz/tutoril.html)导入GKD使用。
 
 由于hash的不可逆性，部分规则会因无法获取具体的应用信息，而被抛弃，具体抛弃数量可以查看`log.txt`。
 

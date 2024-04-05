@@ -18,7 +18,7 @@ const convert = async () => {
   let thisSub: RawSubscription = {
     id: -2,
     name: '本地订阅',
-    version: 1,
+    version: 0,
     author: 'gkd',
     globalGroups: [],
     categories: [],
@@ -92,7 +92,7 @@ const convert = async () => {
         thisGroup.rules = thisGroupRules;
         if(LappConfig.hasOwnProperty('unite_popup_rules')){
           if(LappConfig.unite_popup_rules == true){
-            if(ruleKeyCount < getJsonArrayLength(LappConfig) - 1) ruleKeyCount++;
+            if(ruleKeyCount < getJsonArrayLength(Lrules) - 1) ruleKeyCount++;
             else{
               thisApp.groups.push(thisGroup);
               groupKeyCount++;
