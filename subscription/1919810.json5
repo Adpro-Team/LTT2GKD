@@ -5,5 +5,17 @@
   author: 'https://ltt2gkd.adproqwq.xyz',
   globalGroups: [],
   categories: [],
-  apps: [],
+  apps: [
+    {
+      name: '占位',
+      id: 'xyz.adproqwq.ltt2gkd',
+      groups: [
+        {
+          key: 0,
+          name: '占位',
+          rules: '[vid="123"]',
+        },
+      ],
+    },
+  ],
 }
