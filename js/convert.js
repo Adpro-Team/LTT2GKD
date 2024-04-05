@@ -3,7 +3,6 @@ var thisSub = {
   name: '新世纪福音战士',
   version: 1,
   author: 'https://ltt2gkd.adproqwq.xyz',
-  checkUpdateUrl: './version.json5',
   globalGroups: [],
   categories: [],
   apps: [],

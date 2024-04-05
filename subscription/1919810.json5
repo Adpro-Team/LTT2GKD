@@ -3,7 +3,6 @@
   name: '请参照网页上的教程导入',
   version: 0,
   author: 'https://ltt2gkd.adproqwq.xyz',
-  checkUpdateUrl: './version.json5',
   globalGroups: [],
   categories: [],
   apps: [],
