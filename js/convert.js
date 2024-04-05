@@ -84,10 +84,7 @@ async function convert(){
         thisGroup.rules = thisGroupRules;
         if(LappConfig.hasOwnProperty('unite_popup_rules')){
           if(LappConfig.unite_popup_rules == true){
-            if(ruleKeyCount < getJsonArrayLength(Lrules) - 1){
-              console.log(ruleKeyCount);
-              ruleKeyCount++;
-            }
+            if(ruleKeyCount < getJsonArrayLength(Lrules) - 1) ruleKeyCount++;
             else{
               thisApp.groups.push(thisGroup);
               groupKeyCount++;
