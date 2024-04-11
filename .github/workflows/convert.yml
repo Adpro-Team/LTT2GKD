@@ -21,7 +21,7 @@ jobs:
         run: pnpm run list
 
       - id: convert
-        run: pnpm run convert
+        run: pnpm convert
 
       - name: Git commit
         id: commit
