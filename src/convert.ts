@@ -72,8 +72,6 @@ const convert = async () => {
 
         const thisRuleMatches = iArrayToArray(thisRule.matches as IArray<string>);
 
-        thisRuleMatches.push(textRuleConvert(r.id));
-
         if(r.action == 'GLOBAL_ACTION_BACK') thisRule.action = 'back';
         else{
           let isBounds = r.action.split(',');
