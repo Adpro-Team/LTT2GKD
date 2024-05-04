@@ -8,11 +8,11 @@
     "@gkd-kit/api": "^0.0.5",
     "hashj": "^1.0.2",
     "json5": "^2.2.3",
-    "tsx": "^4.7.2"
+    "tsx": "^4.9.1"
   },
   "devDependencies": {
-    "@types/node": "^20.12.7",
+    "@types/node": "^20.12.8",
     "typescript": "^5.4.5"
   },
-  "packageManager": "pnpm@9.0.5"
+  "packageManager": "pnpm@9.0.6"
 }
