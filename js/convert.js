@@ -8,12 +8,10 @@ var thisSub = {
   apps: [],
 };
 
-async function convert(){
+async function convert(origin){
   const AppList = JSON5.parse(await $.get('https://raw.gitmirror.com/Adpro-Team/LTT2GKD/main/AppList.json5'));
   const AppExtList = JSON5.parse(await $.get('https://raw.gitmirror.com/Adpro-Team/LTT2GKD/main/AppExtList.json5'));
-  const lttSub = document.getElementById('ltt-rules').value;
   const List = AppList.concat(AppExtList);
-  const origin = JSON5.parse(lttSub);
   const originLength = getJsonArrayLength(origin);
   let throwCount = 0;
 
@@ -63,8 +61,6 @@ async function convert(){
         if(LappConfig.hasOwnProperty('delay')) thisRule.actionDelay = LappConfig.delay;
 
         const thisRuleMatches = thisRule.matches;
-
-        thisRuleMatches.push(textRuleConvert(r.id));
 
         if(r.action == 'GLOBAL_ACTION_BACK') thisRule.action = 'back';
         else{

@@ -24,12 +24,13 @@ function textRuleConvert(lttRule){
 };
 
 function boundsRuleConvert(lttRule){
-  let temp = lttRule.split(',');
-  let width = Number(temp[2]);
-  let height = temp[3];
-  let position = {
-    left: width,
-    top: `${height} / width`
+  const temp = lttRule.split(',');
+  const left = Number(temp[0]), top = Number(temp[1]), right = Number(temp[2]), bottom = Number(temp[3]);
+  const horizontalCenter = right - (right - left) / 2;
+  const verticalCenter = bottom - (bottom - top) / 2;
+  const position = {
+    left: horizontalCenter,
+    top: verticalCenter
   };
   return position;
 };
