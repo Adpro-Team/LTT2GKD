@@ -1,5 +1,7 @@
-function exportJSON(){
-  const GKDRules = JSON.parse(JSON.stringify(thisSub));
+import json5 from 'json5';
+
+export const exportJSON = () => {
+  const GKDRules = json5.parse((document.getElementById('gkd-rules-hidden')! as HTMLTextAreaElement).value);
 
   const blob = new Blob([JSON.stringify(GKDRules)], {
     type: 'application/json'
@@ -11,9 +13,5 @@ function exportJSON(){
   aTag.click();
   URL.revokeObjectURL(downloadURL);
 
-  document.getElementById('export-message').innerHTML =
-    `
-    已调用浏览器下载
-    <a href="./tutoril.html">点此查看导入教程</a>
-    `;
+  document.getElementById('export-message')!.style.display = 'block';
 }

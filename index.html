@@ -1,44 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>李跳跳规则转GKD规则</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css">
-  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="/src/assets/main.css">
 </head>
 
 <body>
-  <div class="container">
-    <h2>李跳跳规则转GKD规则</h2>
-    <textarea id="ltt-rules" rows="15" cols="100" placeholder="请输入李跳跳规则&#10;它的格式应类似[{},{},{}...]"></textarea>
-    <textarea id="gkd-rules" rows="15" cols="100"></textarea>
-    <button class="button" onclick="checkFormat()">转换</button>
-    <button class="button" onclick="exportJSON()">导出</button>
-    <p class="message" id="export-message"></p>
-  </div>
-
-  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://cdn.bootcdn.net/ajax/libs/json5/2.2.3/index.min.js"></script>
-  <script src="./js/method.js"></script>
-  <script src="./js/convert.js"></script>
-  <script src="./js/export.js"></script>
-  <script src="./js/checkFormat.js"></script>
-
-  <footer>
-    <p align="center">
-      <b>
-        点击查看<a href="https://github.com/Adpro-Team/LTT2GKD" target="_blank"> Github </a>项目
-        本页面由<a href="https://github.com/Adpro-Team" target="_blank"> Adpro-Team </a>进行维护
-      </b>
-    </p>
-    <p align="center">
-      <b>
-        本页面由 https://snoopy1866.github.io/LiTiaotiao-Custom-Rules/ 修改而来
-        在此特别感谢<a href="https://github.com/FW27623"> FW27623 </a>
-      </b>
-    </p>
-  </footer>
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
 </body>
 
 </html>

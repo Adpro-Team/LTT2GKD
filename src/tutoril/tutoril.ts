@@ -1,5 +1,9 @@
-const tutoril =
-`
+import DOMPurify from 'dompurify';
+import { marked } from 'marked';
+
+export const tutoril = () => {
+  const tutoril =
+    `
 # 准备
 
 你需要准备以下的东西：
@@ -29,4 +33,5 @@ Android/data/li.songe.gkd/files/subscription
 强行停止GKD，重新打开GKD
 `;
 
-document.getElementsByClassName('container')[0].innerHTML = DOMPurify.sanitize(marked.parse(tutoril));
+  document.getElementsByClassName('container')[0].innerHTML = DOMPurify.sanitize(marked.parse(tutoril) as string);
+};
