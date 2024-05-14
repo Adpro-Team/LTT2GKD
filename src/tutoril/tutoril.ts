@@ -30,7 +30,7 @@ Android/data/li.songe.gkd/files/subscription
 
 ## 第四步
 
-强行停止GKD，重新打开GKD
+强行停止GKD，重新打开GKD即可
 `;
 
   document.getElementsByClassName('container')[0].innerHTML = DOMPurify.sanitize(marked.parse(tutoril) as string);
