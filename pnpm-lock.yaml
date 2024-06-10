@@ -14,9 +14,6 @@ importers:
       dompurify:
         specifier: ^3.1.5
         version: 3.1.5
-      jquery:
-        specifier: ^3.7.1
-        version: 3.7.1
       json5:
         specifier: ^2.2.3
         version: 2.2.3
@@ -822,9 +819,6 @@ packages:
 
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
-
-  jquery@3.7.1:
-    resolution: {integrity: sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==}
 
   js-yaml@4.1.0:
     resolution: {integrity: sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==}
@@ -1904,8 +1898,6 @@ snapshots:
   is-path-inside@3.0.3: {}
 
   isexe@2.0.0: {}
-
-  jquery@3.7.1: {}
 
   js-yaml@4.1.0:
     dependencies:

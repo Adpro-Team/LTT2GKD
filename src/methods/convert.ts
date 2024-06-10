@@ -1,10 +1,9 @@
 import json5 from 'json5';
 import type { RawSubscription, RawApp, RawAppGroup, RawAppRule, IArray } from '@gkd-kit/api';
 import { getJsonArrayLength, iArrayToArray, textRuleConvert, boundsRuleConvert } from './method'
-import $ from 'jquery';
 
 export const convert = async (origin: Object[]) => {
-  const List = json5.parse(await $.get('https://raw.gitmirror.com/Adpro-Team/LTT2GKD/main/AppList.json5'));
+  const List = json5.parse(await (await fetch('https://raw.gitmirror.com/Adpro-Team/LTT2GKD/main/AppList.json5')).text());
   const originLength = getJsonArrayLength(origin);
   let throwCount = 0;
 
