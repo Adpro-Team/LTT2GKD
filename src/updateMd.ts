@@ -5,10 +5,8 @@ import { PatchAppList } from '../patch';
 
 export const UpdateMd = async () => {
   const AppListFile = await fs.readFile(process.cwd() + '/AppList.json5', 'utf-8');
-  const AppExtListFile = await fs.readFile(process.cwd() + '/AppExtList.json5', 'utf-8');
   const AppList = json5.parse(AppListFile);
-  const AppExtList = json5.parse(AppExtListFile);
-  const totalAppCount = getJsonArrayLength(AppList) + getJsonArrayLength(AppExtList);
+  const totalAppCount = getJsonArrayLength(AppList);
 
   const patchCount = getJsonArrayLength(PatchAppList);
 
