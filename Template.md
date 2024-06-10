@@ -100,8 +100,6 @@ pnpm run list
 
 当前收录应用 --APPCOUNT-- 个，其中，添加应用补丁 --PATCHCOUNT-- 个。
 
-注意：其中包含大量 OPPO、小米等 手机品牌和安卓系统的系统应用。~~所以只是看起来多~~
-
 ## 致谢
 
 应用库提供 By [@AIsouler](https://github.com/AIsouler)、[@gkd-kit](https://github.com/gkd-kit)
