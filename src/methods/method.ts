@@ -4,11 +4,11 @@ export const iArrayToArray = <T>(array: IArray<T> = []): T[] => {
   return Array<T>().concat(array);
 };
 
-export const getJsonArrayLength = (jsonArray: any) => {
+export const getJsonArrayLength = (jsonArray: any[]) => {
   let length = 0;
-  for (const i in jsonArray) {
+  jsonArray.forEach(() => {
     length++;
-  }
+  });
   return length;
 };
 

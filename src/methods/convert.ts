@@ -4,9 +4,7 @@ import { getJsonArrayLength, iArrayToArray, textRuleConvert, boundsRuleConvert }
 import $ from 'jquery';
 
 export const convert = async (origin: Object[]) => {
-  const AppList = json5.parse(await $.get('https://raw.gitmirror.com/Adpro-Team/LTT2GKD/main/AppList.json5'));
-  const AppExtList = json5.parse(await $.get('https://raw.gitmirror.com/Adpro-Team/LTT2GKD/main/AppExtList.json5'));
-  const List = AppList.concat(AppExtList);
+  const List = json5.parse(await $.get('https://raw.gitmirror.com/Adpro-Team/LTT2GKD/main/AppList.json5'));
   const originLength = getJsonArrayLength(origin);
   let throwCount = 0;
 
