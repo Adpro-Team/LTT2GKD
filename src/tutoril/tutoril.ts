@@ -1,7 +1,7 @@
 import DOMPurify from 'dompurify';
 import { marked } from 'marked';
 
-export const tutoril = () => {
+export default () => {
   const tutoril =
     `
 # 准备

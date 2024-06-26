@@ -1,5 +1,5 @@
 <script lang="ts">
-import { tutoril } from '@/tutoril/tutoril';
+import tutoril from '@/tutoril/tutoril';
 import { defineComponent } from 'vue'
 
 export default defineComponent({
