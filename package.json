@@ -17,12 +17,12 @@
     "dompurify": "^3.1.5",
     "json5": "^2.2.3",
     "marked": "^13.0.1",
-    "vue": "^3.4.21",
+    "vue": "^3.4.31",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
     "@farmfe/cli": "^1.0.2",
-    "@farmfe/core": "^1.2.3",
+    "@farmfe/core": "^1.2.4",
     "@rushstack/eslint-patch": "^1.10.3",
     "@tsconfig/node20": "^20.1.4",
     "@types/dompurify": "^3.0.5",
