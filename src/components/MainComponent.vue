@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { checkFormat } from '@/methods/checkFormat';
-import { exportJSON } from '@/methods/export';
+import { checkFormat } from '@/utils/checkFormat';
+import { exportJSON } from '@/utils/export';
 import { RouterLink } from 'vue-router';
 </script>
 
@@ -16,8 +16,8 @@ import { RouterLink } from 'vue-router';
       <button class="button" @click="exportJSON">导出</button>
       <p class="message" id="export-message" style="display: none;">
         已调用浏览器下载
-        <RouterLink to="/tutoril">点此查看导入教程</RouterLink>
       </p>
+      <RouterLink to="/tutoril">点此查看导入教程</RouterLink>
     </div>
 
     <footer>
