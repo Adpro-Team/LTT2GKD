@@ -8,10 +8,10 @@ export const convert = async (origin: Object[]) => {
   let throwCount = 0;
 
   const thisSub: RawSubscription = {
-    id: -2,
-    name: '本地订阅',
+    id: 2,
+    name: '李跳跳规则转GKD订阅',
     version: 0,
-    author: 'gkd',
+    author: 'adproqwq',
     globalGroups: [],
     categories: [],
     apps: [],
