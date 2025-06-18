@@ -5,11 +5,12 @@ import { getJsonArrayLength, getHash } from "./method";
 import fs from 'node:fs/promises';
 import json5 from 'json5';
 
-export const writeList = async() => {
+export const writeList = async () => {
   const libDir = await fs.readdir(process.cwd() + '/libs');
-  var List: Root = [];
-  var id: string[] = [''], name: string[] = [''], hash: string[] = [''];
-  var count = 0;
+  let List: Root = [];
+  let id: string[] = [''], name: string[] = [''], hash: string[] = [''];
+  let count = 0;
+
   for(let i in libDir){
     const subFile = await fs.readFile(process.cwd() + '/libs/' + libDir[i], 'utf-8');
     const sub = json5.parse(subFile);
