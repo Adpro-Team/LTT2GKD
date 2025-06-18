@@ -6,13 +6,12 @@
   },
   "dependencies": {
     "@gkd-kit/api": "^0.7.3",
-    "hashj": "^1.0.2",
     "json5": "^2.2.3",
     "tsx": "^4.20.3"
   },
   "devDependencies": {
     "@types/node": "^24.0.3",
-    "@typescript/native-preview": "7.0.0-dev.20250618.1"
+    "typescript": "^5.8.3"
   },
   "packageManager": "pnpm@10.12.1"
 }

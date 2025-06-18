@@ -1,12 +1,9 @@
-import { createRequire } from "module";
 import type { Root, RawPatchApp } from "./types";
 import { RawApp } from '@gkd-kit/api';
 import { PatchAppList } from '../patch';
-import { getJsonArrayLength } from "./method";
+import { getJsonArrayLength, getHash } from "./method";
 import fs from 'node:fs/promises';
 import json5 from 'json5';
-const require = createRequire(import.meta.url);
-const hashj = require('hashj');
 
 export const writeList = async() => {
   const libDir = await fs.readdir(process.cwd() + '/libs');
@@ -21,7 +18,7 @@ export const writeList = async() => {
       if(id.indexOf(a.id) == -1){
         id.push(a.id);
         name.push(a.name as string);
-        hash.push(String(hashj.jHashCode(a.id)));
+        hash.push(String(getHash(a.id)));
         count++;
       }
     });
@@ -33,12 +30,12 @@ export const writeList = async() => {
         if(id.indexOf(a.packageName) == -1){
           id.push(a.packageName);
           name.push(a.appName);
-          hash.push(String(hashj.jHashCode(a.packageName)));
+          hash.push(String(getHash(a.packageName)));
           count++;
         }
       });
     }
-  
+
     for(let i = 1;i <= count;i++){
       List.push({
         appId: id[i],

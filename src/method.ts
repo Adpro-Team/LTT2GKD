@@ -1,4 +1,4 @@
-import type { IArray, Position } from "@gkd-kit/api";
+import type { IArray } from '@gkd-kit/api';
 
 export const iArrayToArray = <T>(array: IArray<T> = []): T[] => {
   return Array<T>().concat(array);
@@ -39,4 +39,19 @@ export const boundsRuleConvert = (lttRule: string) => {
     top: verticalCenter
   };
   return position;
+};
+
+// From https://github.com/bytecodehq/hashj/
+export const getHash = (str: string): number => {
+  let hash = 0;
+
+  if(str.length === 0) return hash;
+
+  for(let i = 0;i < str.length;i++){
+    let char = str.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash |= 0;
+  }
+
+  return hash;
 };
